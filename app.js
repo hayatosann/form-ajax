@@ -1,26 +1,36 @@
-$(function(){
-  $('#form-ajax').on('submit', function(e){
-      e.preventDefault();
+// インデントとか修正
+$(function () {
+  $("#form-ajax").on("submit", function (e) {
+    e.preventDefault();
 
-      content = $('#content').val();
-      console.log(content);
+    // constつけたほうがよい
+    const content = $("#content").val();
+    console.log(content);
 
-      $.ajax({
-        type: "POST",
-        url: "ajax.php",
-        data: {"content": content},
-        dataType: "json"
-      }).done(function(data){
+    $.ajax({
+      type: "POST",
+      url: "ajax.php",
+      data: { content: content },
+      dataType: "json",
+    })
+      .done(function (data) {
         console.log(data);
-        let html = `
-        <div>
-          <p>${data.content}</p>
-        </div>
-        `;
-        $("#container").append(html);
+        // 関数にまとめちゃう
+        renderHtml(data)
         console.log(data);
-      }).fail(function(error){
-        console.log('失敗');
+      })
+      .fail(function (error) {
+        console.log("失敗");
       });
-   });
+  });
+
+  function renderHtml(data) {
+    // 値変えないならconstがいいかな
+    const html = `
+    <div>
+      <p>${data.content}</p>
+    </div>
+    `;
+    $("#container").append(html);
+  }
 });

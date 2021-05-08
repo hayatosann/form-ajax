@@ -1,4 +1,6 @@
 <?php
+  // DB接続はajax.phpと重複するからdbconnect.phpみたいなファイル作って移動が良いと思う。
+  // インデント4つがいいかも
   $dsn = 'mysql:dbname=phpajax;host=localhost';
   $user = 'root';
   $password = '';
@@ -17,6 +19,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <!-- defer つけたほうがいいと思う -->
+  <!-- https://qiita.com/phanect/items/82c85ea4b8f9c373d684 -->
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script src="./app.js"></script>
 </head>
